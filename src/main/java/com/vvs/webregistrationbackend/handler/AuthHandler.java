@@ -10,7 +10,6 @@ import reactor.core.publisher.Mono;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 
 import com.vvs.webregistrationbackend.dto.UserDTO;
-import com.vvs.webregistrationbackend.model.User;
 import com.vvs.webregistrationbackend.service.UserService;
 
 @Component
@@ -20,9 +19,10 @@ public class AuthHandler {
   private UserService userService;
   
   public Mono<ServerResponse> register(ServerRequest request) {
-    Mono<User> user = request
+    Mono<UserDTO> user = request
       .bodyToMono(UserDTO.class)
-      .flatMap(userService::postUserData);
+      .flatMap(userService::postUserData)
+      .switchIfEmpty(Mono.empty());
 
     return ServerResponse
       .ok()

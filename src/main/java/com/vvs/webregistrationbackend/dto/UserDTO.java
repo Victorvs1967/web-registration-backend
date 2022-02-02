@@ -1,9 +1,11 @@
 package com.vvs.webregistrationbackend.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 @AllArgsConstructor
 public class UserDTO {
   
@@ -13,5 +15,7 @@ public class UserDTO {
   private String firstName;
   private String lastName;
   
-  private String fullName = (firstName != null) ? firstName.concat(" ").concat(lastName) : "";
+  public String getFullName() {
+    return firstName != null ? firstName.concat(" ").concat(lastName) : "";
+  }
 }
