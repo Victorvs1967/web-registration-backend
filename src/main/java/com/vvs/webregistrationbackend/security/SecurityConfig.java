@@ -1,9 +1,8 @@
 package com.vvs.webregistrationbackend.security;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
-import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.server.authentication.WebFilterChainServerAuthenticationSuccessHandler;
@@ -13,8 +12,7 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 import reactor.core.publisher.Mono;
 
-@EnableWebFluxSecurity
-@EnableReactiveMethodSecurity
+@Configuration
 public class SecurityConfig {
   
   @Bean
